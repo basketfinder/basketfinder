@@ -82,9 +82,10 @@ SUPABASE_KEY
 );
 
 async function savePlayer(){
+
 alert("Ξεκινά αποθήκευση");
 
-const { error } = await supabase
+const {error}=await supabase
 .from("players")
 .insert([
 {
@@ -97,12 +98,12 @@ area:"Athens"
 ]);
 
 if(error){
-alert("Σφάλμα: " + error.message);
+alert(error.message);
+console.log(error);
 }else{
 alert("Αποθηκεύτηκε!");
 }
 }
 </script>
-
 </body>
 </html>
