@@ -73,8 +73,29 @@ cursor:pointer;
 </div>
 
 <script>
-function savePlayer(){
-alert("Το κουμπί πατήθηκε!");
+const SUPABASE_URL="https://fjfjnjqbpxgdxqaufzfv.supabase.co";
+const SUPABASE_KEY="ΒΑΛΕ_ΕΔΩ_ΤΟ_KEY_ΣΟΥ";
+
+const supabase=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+
+async function savePlayer(){
+alert("Ξεκινά αποθήκευση");
+
+const { error } = await supabase.from("players").insert([
+{
+name:"Test",
+age:20,
+height:"1.80",
+position:"Point Guard",
+area:"Athens"
+}
+]);
+
+if(error){
+alert("Σφάλμα: " + error.message);
+}else{
+alert("Αποθηκεύτηκε!");
+}
 }
 </script>
 
