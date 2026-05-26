@@ -3,18 +3,14 @@
 <head>
 <title>BasketFinder</title>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
 <style>
 body{
 font-family:Arial;
 background:#111;
 color:white;
-margin:0;
 padding:30px;
-}
-
-h1{
-color:#ff7a00;
-text-align:center;
 }
 
 .container{
@@ -27,19 +23,16 @@ border-radius:15px;
 
 input,select{
 width:100%;
-padding:12px;
+padding:10px;
 margin:10px 0;
-border-radius:8px;
-border:none;
 }
 
 button{
 width:100%;
 padding:15px;
-background:#ff7a00;
-color:white;
+background:orange;
 border:none;
-border-radius:10px;
+color:white;
 font-size:18px;
 }
 </style>
@@ -47,20 +40,17 @@ font-size:18px;
 
 <body>
 
-<h1>BasketFinder.gr</h1>
-
 <div class="container">
 
-<h2>Εγγραφή Παίκτη</h2>
+<h1>BasketFinder</h1>
 
-<input type="text" placeholder="Όνομα">
+<input id="name" placeholder="Όνομα">
 
-<input type="number" placeholder="Ηλικία">
+<input id="age" placeholder="Ηλικία">
 
-<input type="text" placeholder="Ύψος">
+<input id="height" placeholder="Ύψος">
 
-<select>
-<option>Θέση</option>
+<select id="position">
 <option>Point Guard</option>
 <option>Shooting Guard</option>
 <option>Small Forward</option>
@@ -68,7 +58,7 @@ font-size:18px;
 <option>Center</option>
 </select>
 
-<input type="text" placeholder="Περιοχή">
+<input id="area" placeholder="Περιοχή">
 
 <button>Δημιουργία Προφίλ</button>
 
