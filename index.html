@@ -84,7 +84,9 @@ SUPABASE_KEY
 async function savePlayer(){
 alert("Ξεκινά αποθήκευση");
 
-const { error } = await supabase.from("players").insert([
+const { error } = await supabase
+.from("players")
+.insert([
 {
 name:"Test",
 age:20,
