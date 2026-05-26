@@ -10,32 +10,34 @@ body{
 font-family:Arial;
 background:#111;
 color:white;
-padding:30px;
+display:flex;
+justify-content:center;
+padding:40px;
 }
 
 .container{
-max-width:500px;
-margin:auto;
+width:500px;
 background:#222;
-padding:20px;
+padding:25px;
 border-radius:15px;
 }
 
-input,select{
+input,select,button{
 width:100%;
-padding:10px;
+padding:12px;
 margin:10px 0;
+border:none;
+border-radius:8px;
 }
 
 button{
-width:100%;
-padding:15px;
 background:orange;
-border:none;
 color:white;
 font-size:18px;
+cursor:pointer;
 }
 </style>
+
 </head>
 
 <body>
@@ -60,19 +62,23 @@ font-size:18px;
 
 <input id="area" placeholder="Περιοχή">
 
-<button id="saveBtn">Δημιουργία Προφίλ</button>
+<button id="saveBtn" type="button">
+Δημιουργία Προφίλ
+</button>
 
 </div>
-<script>
-const SUPABASE_URL = "https://fjfjnjqbpxgdxqaufzfv.supabase.co/rest/v1/"
-const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZqZmpuanFicHhnZHhxYXVmemZ2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk3NTAxOTcsImV4cCI6MjA5NTMyNjE5N30.cy8u_z7iDx1JWv-Ee2jC6P5NfK7-P1Z-2xwmLqAlAlI"
 
-const supabase = window.supabase.createClient(
+<script>
+
+const SUPABASE_URL="https://fjfjnjqbpxgdxqaufzfv.supabase.co/rest/v1/"
+const SUPABASE_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZqZmpuanFicHhnZHhxYXVmemZ2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk3NTAxOTcsImV4cCI6MjA5NTMyNjE5N30.cy8u_z7iDx1JWv-Ee2jC6P5NfK7-P1Z-2xwmLqAlAlI"
+
+const supabase=window.supabase.createClient(
 SUPABASE_URL,
 SUPABASE_KEY
 );
 
-document.getElementById("saveBtn").onclick = async function(){
+document.getElementById("saveBtn").onclick=async()=>{
 
 const name=document.getElementById("name").value;
 const age=document.getElementById("age").value;
@@ -82,25 +88,24 @@ const area=document.getElementById("area").value;
 
 const {error}=await supabase
 .from("players")
-.insert([
-{
-name:name,
-age:age,
-height:height,
-position:position,
-area:area
-}
-]);
+.insert([{
+name,
+age,
+height,
+position,
+area
+}]);
 
 if(error){
-alert("Σφάλμα");
-}
-else{
+alert("Σφάλμα αποθήκευσης");
+console.log(error);
+}else{
 alert("Το προφίλ αποθηκεύτηκε!");
 }
 
-}
+};
+
 </script>
+
 </body>
 </html>
-
